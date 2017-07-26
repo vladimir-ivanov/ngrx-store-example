@@ -4,5 +4,6 @@ md-sidenav {
   .mat-icon-button {
     position: absolute;
     right: 0;
+    z-index: 10;
   }
 }

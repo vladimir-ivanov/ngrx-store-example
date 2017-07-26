@@ -5,6 +5,7 @@ import {ToolbarModule} from "./toolbar/toolbar.module";
 import {SidenavModule} from "./sidenav/sidenav.module";
 import {NotFoundPageComponent} from "./not-found-page";
 import {MaterialModule} from "@angular/material";
+import { PageSidenavComponent } from './page-sidenav/page-sidenav.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import {MaterialModule} from "@angular/material";
     SidenavModule
   ],
   exports: [LayoutModule, ToolbarModule, SidenavModule, NotFoundPageComponent],
-  declarations: [NotFoundPageComponent],
+  declarations: [NotFoundPageComponent]
 })
 export class SharedModule {
 }

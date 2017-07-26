@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {InjectionToken, NgModule} from '@angular/core';
 import {MaterialModule} from '@angular/material';
 
 import {AppComponent} from './app.component';
@@ -16,6 +16,9 @@ import {StoreModule} from "@ngrx/store";
 import {metaReducers, reducers} from "./reducers";
 import {RouterModule} from "@angular/router";
 import {routes} from "./routes";
+import {AppConfig, paths} from "./config";
+import {BooksModule} from "./books/books.module";
+import {BooksService} from "./books/books.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +28,7 @@ import {routes} from "./routes";
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
-     RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes, {useHash: true}),
     CommonModule,
     MaterialModule,
     /**
@@ -64,9 +67,12 @@ import {routes} from "./routes";
     EffectsModule.forRoot([]),
 
     SharedModule,
-    TodoModule
+    BooksModule
   ],
-  providers: [],
+  providers: [
+    {provide: AppConfig, useValue: {paths}},
+    BooksService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

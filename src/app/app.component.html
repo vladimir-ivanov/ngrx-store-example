@@ -1,7 +1,1 @@
-<app-layout>
-  <app-toolbar (openMenu)="toggleSidenav(true)">
-    My App
-  </app-toolbar>
-  <router-outlet></router-outlet>
-  <app-sidenav [open]="sidenavOpened | async" (openChange)="toggleSidenav(false)"></app-sidenav>
-</app-layout>
+<router-outlet></router-outlet>

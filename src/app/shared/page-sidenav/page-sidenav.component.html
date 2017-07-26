@@ -1,0 +1,8 @@
+<app-layout>
+  <app-toolbar (openMenu)="toggleSidenav(true)">
+    <ng-content select="[data-toolbar-content]"></ng-content>
+  </app-toolbar>
+  <app-sidenav [open]="sidenavOpened | async" (openChange)="toggleSidenav(false)">
+    <ng-content select="[data-sidenav-content]"></ng-content>
+  </app-sidenav>
+</app-layout>
