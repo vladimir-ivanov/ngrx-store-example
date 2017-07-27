@@ -12,7 +12,7 @@ import {
  * notation packages up all of the exports into a single object.
  */
 
-import * as fromSidenav from './shared/sidenav/sidenav.reducers';
+import * as fromSidenav from './shared/page-sidenav/page-sidenav.reducers';
 
 import {environment} from "../environments/environment";
 

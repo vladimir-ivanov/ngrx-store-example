@@ -1,14 +1,15 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {Store} from "@ngrx/store";
-import {getSidenavOpened} from "../sidenav/sidenav.reducers";
-import {CloseSidenavAction, OpenSidenavAction} from "../sidenav/sidenav.actions";
+import {getSidenavOpened} from "./page-sidenav.reducers";
+import {CloseSidenavAction, OpenSidenavAction} from "./page-sidenav.actions";
 import {State} from "../../reducers";
 
 @Component({
   selector: 'app-page-sidenav',
   templateUrl: './page-sidenav.component.html',
-  styleUrls: ['./page-sidenav.component.scss']
+  styleUrls: ['./page-sidenav.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageSidenavComponent {
   sidenavOpened: Observable<boolean>;

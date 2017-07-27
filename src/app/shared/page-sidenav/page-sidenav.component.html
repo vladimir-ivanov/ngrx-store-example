@@ -5,4 +5,5 @@
   <app-sidenav [open]="sidenavOpened | async" (openChange)="toggleSidenav(false)">
     <ng-content select="[data-sidenav-content]"></ng-content>
   </app-sidenav>
+  <ng-content select="[data-main-content]"></ng-content>
 </app-layout>

@@ -1,4 +1,4 @@
-import {Actions, SIDENAV} from "./sidenav.actions";
+import {Actions, SIDENAV} from "./page-sidenav.actions";
 import {createFeatureSelector, createSelector} from "@ngrx/store";
 
 export interface State {
