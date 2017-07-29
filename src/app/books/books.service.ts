@@ -2,8 +2,8 @@ import 'rxjs/add/operator/map';
 import {Inject, Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import {Book} from "./domain";
 import {AppConfig} from "../config";
+import {Book} from "./models/book";
 
 @Injectable()
 export class BooksService {

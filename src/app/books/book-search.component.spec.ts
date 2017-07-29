@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BookSearchComponent } from './book-search.component';
+import {BookSearchComponent} from './book-search.component';
 
 describe('BookSearchComponent', () => {
   let component: BookSearchComponent;
@@ -8,13 +8,18 @@ describe('BookSearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookSearchComponent ]
-    })
-    .compileComponents();
+      declarations: [BookSearchComponent]
+    });
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BookSearchComponent);
+    fixture = TestBed.overrideComponent(BookSearchComponent,
+      {
+        set: {
+          template: '<div></div>'
+        }
+      }).createComponent(BookSearchComponent);
+
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
