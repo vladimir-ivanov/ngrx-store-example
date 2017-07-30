@@ -1,4 +1,3 @@
-import {createSelector} from '@ngrx/store';
 import {Book} from '../models/book';
 import {BOOK} from "../actions/book-search.actions";
 
@@ -43,8 +42,3 @@ export function reducer(state = initialState,
 }
 
 export const getEntities = (state: State) => state.entities;
-export const getIds = (state: State) => state.ids;
-
-export const getAll = createSelector(getEntities, getIds, (entities, ids) => {
-  return ids.map(id => entities[id]);
-});

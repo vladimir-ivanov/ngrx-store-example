@@ -19,26 +19,9 @@ export const reducers = {
 
 export const getBooksState = createFeatureSelector<BooksState>('books');
 
-export const getSearchState = createSelector(
-  getBooksState,
-  (state: BooksState) => state.search
-);
 export const getBooksListState = createSelector(
   getBooksState,
   (state: BooksState) => state.booksList
-);
-
-export const getSearchBookIds = createSelector(
-  getSearchState,
-  fromSearch.getIds
-);
-export const getSearchQuery = createSelector(
-  getSearchState,
-  fromSearch.getQuery
-);
-export const getSearchLoading = createSelector(
-  getSearchState,
-  fromSearch.getLoading
 );
 export const getBooksListEntities = createSelector(
   getBooksListState,

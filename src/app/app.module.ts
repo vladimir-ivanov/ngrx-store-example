@@ -1,24 +1,26 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {InjectionToken, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {MaterialModule} from '@angular/material';
 
 import {AppComponent} from './app.component';
-import {TodoModule} from "./todo/todo.module";
 import {CommonModule} from "@angular/common";
 import {SharedModule} from "./shared/shared.module";
-import {HttpModule} from "@angular/http";
+import {Http, HttpModule, RequestOptions, XHRBackend} from "@angular/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {EffectsModule} from "@ngrx/effects";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {environment} from "../environments/environment";
 import {StoreRouterConnectingModule} from "@ngrx/router-store";
-import {StoreModule} from "@ngrx/store";
+import {Store, StoreModule} from "@ngrx/store";
 import {metaReducers, reducers} from "./reducers";
 import {RouterModule} from "@angular/router";
 import {routes} from "./routes";
 import {AppConfig, paths} from "./config";
 import {BooksModule} from "./books/books.module";
 import {BooksService} from "./books/books.service";
+import {HttpRequestService} from "./shared/http-request/http-request.service";
+import {HttpRequestModule} from "./shared/http-request/http-request.module";
+import {State} from "./shared/http-request/reducers/http-request.reducer";
 
 @NgModule({
   declarations: [
@@ -55,7 +57,7 @@ import {BooksService} from "./books/books.service";
      *
      * See: https://github.com/zalmoxisus/redux-devtools-extension
      */
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+   // !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     /**
      * EffectsModule.forRoot() is imported once in the root module and
@@ -67,10 +69,16 @@ import {BooksService} from "./books/books.service";
     EffectsModule.forRoot([]),
 
     SharedModule,
-    BooksModule
+    BooksModule,
+    HttpRequestModule
   ],
   providers: [
     {provide: AppConfig, useValue: {paths}},
+    {
+      provide: Http,
+      useFactory: (backend: XHRBackend, options: RequestOptions, store: Store<State>) => new HttpRequestService(backend, options, store),
+      deps: [XHRBackend, RequestOptions, Store]
+    },
     BooksService
   ],
   bootstrap: [AppComponent]

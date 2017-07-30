@@ -17,7 +17,6 @@ import {BOOK, SearchCompleteAction} from "../actions/book-search.actions";
 import {BooksService} from "../books.service";
 import {Book} from "../models/book";
 
-
 export const SEARCH_DEBOUNCE = new InjectionToken<number>('Search Debounce');
 export const SEARCH_SCHEDULER = new InjectionToken<Scheduler>(
   'Search Scheduler'

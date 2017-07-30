@@ -5,7 +5,7 @@ import {ToolbarModule} from "./toolbar/toolbar.module";
 import {SidenavModule} from "./sidenav/sidenav.module";
 import {NotFoundPageComponent} from "./not-found-page";
 import {MaterialModule} from "@angular/material";
-import { PageSidenavComponent } from './page-sidenav/page-sidenav.component';
+import {LoadingIndicatorModule} from "./loading-indicator/loading-indicator.module";
 
 @NgModule({
   imports: [
@@ -13,9 +13,10 @@ import { PageSidenavComponent } from './page-sidenav/page-sidenav.component';
     LayoutModule,
     ToolbarModule,
     MaterialModule,
-    SidenavModule
+    SidenavModule,
+    LoadingIndicatorModule
   ],
-  exports: [LayoutModule, ToolbarModule, SidenavModule, NotFoundPageComponent],
+  exports: [LayoutModule, ToolbarModule, SidenavModule, LoadingIndicatorModule, NotFoundPageComponent],
   declarations: [NotFoundPageComponent]
 })
 export class SharedModule {
