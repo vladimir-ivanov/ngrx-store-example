@@ -21,7 +21,7 @@ export class HttpRequestService extends Http {
     return this.intercept(super.request(url, options));
   }
 
-  intercept(observable: Observable<Response>): Observable<Response> {
+  private intercept(observable: Observable<Response>): Observable<Response> {
     this.pendingRequestsCounter++;
     this.store.dispatch(new HttpRequestLoadingActions(true));
 
