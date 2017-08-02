@@ -25,14 +25,12 @@ export class HttpRequestService extends Http {
     this.store.dispatch(new HttpRequestLoadingActions(true));
 
     return observable
-      .map(res => res.json())
       .catch(res => {
         this.store.dispatch(new AppErrorActions(`${res.status}: ${res.text()}`));
 
         return Observable.throw(res.json());
       })
       .finally(() => {
-        console.log('finally called');
         this.pendingRequestsCounter--;
 
         if (this.pendingRequestsCounter <= 0) {
