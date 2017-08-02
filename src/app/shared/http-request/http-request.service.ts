@@ -1,13 +1,12 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/finally';
+import 'rxjs/add/operator/onErrorResumeNext';
 import {Http, Request, RequestOptions, RequestOptionsArgs, Response, XHRBackend} from '@angular/http';
 import {State} from "./reducers/http-request.reducer";
 import {Store} from "@ngrx/store";
 import {HttpRequestLoadingActions} from "./http-request.actions";
+import {AppErrorActions} from "../error-overlay/errror-overlay.actions";
 
 @Injectable()
 export class HttpRequestService extends Http {
@@ -25,12 +24,20 @@ export class HttpRequestService extends Http {
     this.pendingRequestsCounter++;
     this.store.dispatch(new HttpRequestLoadingActions(true));
 
-    return observable.finally(() => {
-      this.pendingRequestsCounter--;
+    return observable
+      .map(res => res.json())
+      .catch(res => {
+        this.store.dispatch(new AppErrorActions(`${res.status}: ${res.text()}`));
 
-      if (this.pendingRequestsCounter <= 0) {
-        this.store.dispatch(new HttpRequestLoadingActions(false));
-      }
-    });
+        return Observable.throw(res.json());
+      })
+      .finally(() => {
+        console.log('finally called');
+        this.pendingRequestsCounter--;
+
+        if (this.pendingRequestsCounter <= 0) {
+          this.store.dispatch(new HttpRequestLoadingActions(false));
+        }
+      });
   }
 }

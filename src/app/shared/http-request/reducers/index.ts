@@ -1,10 +1,10 @@
 import * as fromHttpRequest from './http-request.reducer';
+import {getHasActiveRequests} from './http-request.reducer';
 import {createFeatureSelector, createSelector} from "@ngrx/store";
 import * as fromRoot from '../../../reducers';
-import {getHasActiveRequests, State} from "./http-request.reducer";
 
 export interface HttpRequestsActiveState extends fromRoot.State {
-  requests: State;
+  requests: fromHttpRequest.State;
 }
 
 export const reducers = {

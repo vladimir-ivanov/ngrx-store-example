@@ -6,6 +6,7 @@ import {SidenavModule} from "./sidenav/sidenav.module";
 import {NotFoundPageComponent} from "./not-found-page";
 import {MaterialModule} from "@angular/material";
 import {LoadingIndicatorModule} from "./loading-indicator/loading-indicator.module";
+import {ErrorOverlayModule} from "./error-overlay/error-overlay.module";
 
 @NgModule({
   imports: [
@@ -14,9 +15,10 @@ import {LoadingIndicatorModule} from "./loading-indicator/loading-indicator.modu
     ToolbarModule,
     MaterialModule,
     SidenavModule,
-    LoadingIndicatorModule
+    LoadingIndicatorModule,
+    ErrorOverlayModule
   ],
-  exports: [LayoutModule, ToolbarModule, SidenavModule, LoadingIndicatorModule, NotFoundPageComponent],
+  exports: [LayoutModule, ToolbarModule, SidenavModule, LoadingIndicatorModule, ErrorOverlayModule, NotFoundPageComponent],
   declarations: [NotFoundPageComponent]
 })
 export class SharedModule {

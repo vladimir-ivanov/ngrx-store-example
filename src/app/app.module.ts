@@ -19,8 +19,12 @@ import {BooksService} from "./books/books.service";
 import {HttpRequestService} from "./shared/http-request/http-request.service";
 import {HttpRequestModule} from "./shared/http-request/http-request.module";
 import {State} from "./shared/http-request/reducers/http-request.reducer";
+import {ErrorOverlayComponent} from "./shared/error-overlay/error-overlay.component";
 
 @NgModule({
+  entryComponents:[
+    ErrorOverlayComponent
+  ],
   declarations: [
     AppComponent
   ],
