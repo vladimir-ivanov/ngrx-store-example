@@ -8,8 +8,6 @@ import {SharedModule} from "./shared/shared.module";
 import {Http, HttpModule, RequestOptions, XHRBackend} from "@angular/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {EffectsModule} from "@ngrx/effects";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {environment} from "../environments/environment";
 import {StoreRouterConnectingModule} from "@ngrx/router-store";
 import {Store, StoreModule} from "@ngrx/store";
 import {metaReducers, reducers} from "./reducers";
@@ -57,7 +55,7 @@ import {State} from "./shared/http-request/reducers/http-request.reducer";
      *
      * See: https://github.com/zalmoxisus/redux-devtools-extension
      */
-   // !environment.production ? StoreDevtoolsModule.instrument() : [],
+    // !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     /**
      * EffectsModule.forRoot() is imported once in the root module and

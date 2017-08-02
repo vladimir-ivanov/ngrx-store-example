@@ -8,8 +8,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script>window.facebook = {};
+  window.fbAsyncInit = function () {
+    window.facebook = FB;
+
+    FB.init({
+      appId: '644331945756367',
+      status: true,
+      cookie: true,
+      xfbml: true,
+      version: 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+
+    FB.login();
+  };
+
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  </script>
 </head>
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
 <body>
-  <app-root></app-root>
+<app-root></app-root>
 </body>
+
 </html>

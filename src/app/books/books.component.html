@@ -6,7 +6,6 @@
     <app-book-search (search)="search($event)" [searching]="false"></app-book-search>
   </div>
   <div data-main-content>
-    <div *ngFor="let bu of books|async">{{bu}}</div>
     <app-books-list [books]="books | async"></app-books-list>
   </div>
 </app-page-sidenav>
