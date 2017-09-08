@@ -21,6 +21,10 @@ import {HttpRequestModule} from "./shared/http-request/http-request.module";
 import {State} from "./shared/http-request/reducers/http-request.reducer";
 import {ErrorOverlayComponent} from "./shared/error-overlay/error-overlay.component";
 
+export function httpFactory(backend: XHRBackend, options: RequestOptions, store: Store<State>) {
+  return new HttpRequestService(backend, options, store);
+}
+
 @NgModule({
   entryComponents:[
     ErrorOverlayComponent
@@ -78,7 +82,7 @@ import {ErrorOverlayComponent} from "./shared/error-overlay/error-overlay.compon
     {provide: AppConfig, useValue: {paths}},
     {
       provide: Http,
-      useFactory: (backend: XHRBackend, options: RequestOptions, store: Store<State>) => new HttpRequestService(backend, options, store),
+      useFactory: httpFactory,
       deps: [XHRBackend, RequestOptions, Store]
     },
     BooksService
